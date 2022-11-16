@@ -10,5 +10,11 @@ pipeline{
                 git branch: 'main', url: 'https://github.com/nani059/demo-counterapp.git'
             }
         }    
+        stage('UNIT testing'){
+
+            steps{
+                sh 'mvn test'
+            }
+        }
     }
 }
