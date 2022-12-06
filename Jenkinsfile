@@ -7,7 +7,7 @@ pipeline{
         stage('Git Checkout'){
             
             steps{
-                git branch: 'main', url: 'https://github.com/nani059/demo-counterapp.git'
+                git credentialsId: 'github', url: 'https://github.com/avinash6043/demo-counterapp.git'
             }
         }    
         stage('UNIT testing'){
@@ -22,14 +22,7 @@ pipeline{
                 sh 'mvn clean install'
             }
         }
-        stage('SonarQube analysis'){
-           steps{
-               script{
-                    withSonarQubeEnv(credentialsId: 'sonarapi-key'){
-                     sh 'mvn clean package sonar:sonar'
-               }
-           }
-        }
+        
     }
 }
 }
